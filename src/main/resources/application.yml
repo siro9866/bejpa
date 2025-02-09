@@ -1,0 +1,23 @@
+spring:
+  profiles.active: local  # run configuration 에서 local주입해서 사용
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+      
+  messages:
+    basename: messages/message,messages/validation
+    encoding: UTF-8
+
+# MyBatis 설정 정보
+mybatis:
+  config-location: classpath:mybatis-config.xml # mybatis설정
+  mapper-locations: classpath:mapper/*.xml # mapper경로와 파일 패턴 지정
+  type-aliases-package: com.sil.bejpa
+
+custom:
+  format:
+    date: yyyy-MM-dd
+    dateStr: yyyyMMdd
+    datetime: yyyy-MM-dd HH:mm:ss.SS
+    datetimeStr: yyyyMMddHHmmss

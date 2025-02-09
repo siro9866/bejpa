@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sil.bejpa.zzboard.mapper.ZzboardMapper">
+
+    <select id="boardList" parameterType="com.sil.bejpa.zboard.dto.ZboardSearchDto" resultType="com.sil.bejpa.zboard.dto.ZboardResponseDto">
+        /* ZboardMapper.boardList 게시판리스트 */
+        SELECT
+            ZB.BOARD_SEQ AS boardSeq
+            , ZB.BOARD_TITLE AS boardTitle
+            , ZB.BOARD_CONTENTS AS boardContents
+            , ZB.VIEW_COUNT AS viewCount
+            , ZB.PRIORITY_YN AS priorityYn
+            , ZB.CREATED_BY AS createdBy
+            , ZB.CREATED_DTTM AS createdDttm
+            , ZB.MODIFIED_BY AS modifiedBy
+            , ZB.MODIFIED_DTTM AS modifiedDttm
+            , (SELECT
+                   COUNT(ZC.COMMENTS_SEQ)
+               FROM ZCOMMENTS ZC
+               WHERE ZC.DELETED_YN = 'N'
+                 AND ZC.BOARD_SEQ = ZB.BOARD_SEQ
+            ) AS commentCount
+            , (SELECT
+                   COUNT(ZF.FILE_SEQ)
+               FROM ZFILE ZF
+               WHERE ZF.BOARD_SEQ = ZB.BOARD_SEQ
+            ) AS fileCount
+        FROM ZBOARD ZB
+
+        WHERE ZB.DELETED_YN = 'N'
+          AND ZB.CREATED_DTTM BETWEEN '2025-02-06 00:00:00.000' AND '2025-02-06 23:59:59.999'
+          AND (
+            LOWER(ZB.BOARD_TITLE) LIKE LOWER(CONCAT('%', #{searchValue}, '%'))
+                OR LOWER(ZB.BOARD_CONTENTS) LIKE LOWER(CONCAT('%', #{searchValue}, '%'))
+            )
+        OFFSET 0 ROWS FETCH	FIRST 11 ROWS ONLY
+    </select>
+</mapper>
