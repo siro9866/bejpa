@@ -20,8 +20,8 @@ spring:
     url: jdbc:mariadb://61.251.164.178:3306/seowon
   # mariadb ###########################################################################################################
     #username: sa
-    username:seowon
-    password:seowon
+    username: seowon
+    password: seowon
 
   sql:
     init:
