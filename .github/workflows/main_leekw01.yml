@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: java-app  # 업로드 이름
-          path: 'build/libs/com.sil-0.0.1-SNAPSHOT.jar'
+          path: 'build/libs/bejpa-0.0.1-SNAPSHOT.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -68,5 +68,5 @@ jobs:
         with:
           app-name: 'leekw01'
           slot-name: 'Production'
-          package: 'com.sil-0.0.1-SNAPSHOT.jar'
+          package: 'bejpa-0.0.1-SNAPSHOT.jar'
           
