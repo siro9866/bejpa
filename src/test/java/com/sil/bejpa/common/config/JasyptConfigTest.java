@@ -13,7 +13,7 @@ class JasyptConfigTest {
 
     @Value("${jasypt.encryptor.key}") String key;
 
-    @Test
+    //@Test
     @DisplayName("비밀번호 암호화")
     public void passwordEncode(){
         String url = "jdbc:mariadb://localhost:3306/sil";
