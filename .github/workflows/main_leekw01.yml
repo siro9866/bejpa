@@ -24,16 +24,20 @@ jobs:
           java-version: '17'
           distribution: 'microsoft'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+      - name: Grant execute permission to gradlew
+        run: chmod +x gradlew
+ 
       - name: Build with Gradle
-        run: chmod +x ./gradlew
-
+        run: ./gradlew build   # (build 실행명령어 설정) --no-daemon
+ 
+      - name: List build/libs contents  # 확인용
+        run: ls -alh build/libs  #  JAR 생성 확인
+ 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          name: java-app  # 업로드 이름
+          path: 'build/libs/com.sil-0.0.1-SNAPSHOT.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -64,5 +68,5 @@ jobs:
         with:
           app-name: 'leekw01'
           slot-name: 'Production'
-          package: '*.jar'
+          package: 'com.sil-0.0.1-SNAPSHOT.jar'
           
