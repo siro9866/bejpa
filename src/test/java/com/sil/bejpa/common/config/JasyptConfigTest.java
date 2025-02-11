@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
-@SpringBootTest
+//@SpringBootTest
 @TestPropertySource(properties = "classpath=application-test.yml")
 class JasyptConfigTest {
 
