@@ -25,7 +25,7 @@ spring:
 
   sql:
     init:
-      mode: never	# 초기 쿼리문 작성 always, never
+      mode: always	# 초기 쿼리문 작성 always, never
       schema-locations: classpath*:initSql/schema.sql
       data-locations: classpath*:initSql/data.sql
 
@@ -33,7 +33,7 @@ spring:
     open-in-view: false
     generate-ddl: true
     hibernate:
-      ddl-auto: none   #create, update, validate, none, create-drop
+      ddl-auto: create   #create, update, validate, none, create-drop
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl   # 카멜이 언더바로 변경되는거 막기
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl   # 쿼리중 필드가 지정한대로 하도록(대소문자 구분하는 DB의 경우 완전 필요)
