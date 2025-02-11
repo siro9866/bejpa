@@ -80,8 +80,8 @@ tasks.withType(JavaCompile) {
 }
 
 azurewebapp {
-    resourceGroup = 'test'
-    appName = 'azureToyProject'
+    resourceGroup = 'leekw01_group'
+    appName = 'bejpa'
     runtime {
       os = 'Linux'
       webContainer = 'Java SE' // or 'Java SE' if you want to run an executable jar
