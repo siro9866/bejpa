@@ -79,6 +79,19 @@ tasks.withType(JavaCompile) {
     options.generatedSourceOutputDirectory = file(querydslDir)
 }
 
+azurewebapp {
+    resourceGroup = 'test'
+    appName = 'azureToyProject'
+    runtime {
+      os = 'Linux'
+      webContainer = 'Java SE' // or 'Java SE' if you want to run an executable jar
+      javaVersion = 'Java 17'
+    }
+    auth {
+        type = 'azure_cli' // support azure_cli, oauth2, device_code and service_principal
+    }
+}
+
 clean {
     delete file(querydslDir)
 }
