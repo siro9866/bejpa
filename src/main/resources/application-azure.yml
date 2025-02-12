@@ -61,7 +61,7 @@ spring:
 
 server:
   host:
-    api: http://localhost:8080
+    api: http://azure1-g3geewbybwc3bdff.koreacentral-01.azurewebsites.net
     front: http://localhost:3000
   port: 8080
 

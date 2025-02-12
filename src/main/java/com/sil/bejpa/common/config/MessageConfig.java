@@ -52,7 +52,7 @@ public class MessageConfig{
 
 	public static class CustomLocaleResolver extends AcceptHeaderLocaleResolver {
 		String[] mLanguageCode = new String[]{"ko", "en"};
-		List<Locale> mLocales = Arrays.asList(Locale.of("en"), Locale.of("es"), Locale.of("ko"));
+		List<Locale> mLocales = Arrays.asList(new Locale("en"), new Locale("ja"), new Locale("ko"));
 
 		@NotNull
 		@Override
@@ -65,7 +65,7 @@ public class MessageConfig{
 			List<Locale.LanguageRange> list = Locale.LanguageRange.parse(request.getHeader("Accept-Language"));
 			mLocales = new ArrayList<>();
 			for (String code : mLanguageCode) {
-				mLocales.add(Locale.of(code));
+				mLocales.add(new Locale(code));
 			}
 			return Locale.lookup(list, mLocales);
 		}
