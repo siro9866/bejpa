@@ -63,6 +63,7 @@ server:
   host:
     api: http://localhost:8080
     front: http://localhost:3000
+  port: 8080
 
 # 파일암호화
 jasypt:
