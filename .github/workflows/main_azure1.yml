@@ -24,14 +24,20 @@ jobs:
           java-version: '17'
           distribution: 'microsoft'
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: Grant execute permission to gradlew
+        run: chmod +x gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build   # (build 실행명령어 설정) --no-daemon
+
+      - name: List build/libs contents  # 확인용
+        run: ls -alh build/libs  #  JAR 생성 확인
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          name: java-app  # 업로드 이름
+          path: 'build/libs/bejpa-0.0.1-SNAPSHOT.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -62,5 +68,5 @@ jobs:
         with:
           app-name: 'azure1'
           slot-name: 'Production'
-          package: '*.jar'
+          package: 'bejpa-0.0.1-SNAPSHOT.jar'
           
