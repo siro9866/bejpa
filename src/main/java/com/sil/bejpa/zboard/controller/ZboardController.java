@@ -34,6 +34,7 @@ public class ZboardController {
 
     private final ZboardService boardService;
 
+
     @Operation(summary = "게시판 리스트", description = "게시판 리스트")
     @GetMapping("")
     public ApiResponse<Page<ZboardResponseDto>> boardList(
