@@ -1,0 +1,105 @@
+spring:
+  datasource:
+    hikari:
+      poolName: HikariCP
+      connectionTimeout: 10000 # 10초를 뜻함. 클라이언트가 pool에 connection을 요청하는데 기다리는 최대시간
+      connection-init-sql: SELECT 1
+      maximum-pool-size: 10 # 유휴 및 사용중인 connection을 포함하여 풀에 보관가능한 최대 커넥션 개수
+      max-lifetime: 1800000 # 30분을 뜻함. connection의 최대 유지 시간을 설정
+      readOnly: false # pool에서 얻은 connection이 기본적으로 readOnly인지 지정하는 설정, 데이터베이스가 readOnly 속성을 지원할 경우에만 사용가능
+      validation-timeout: 2000
+      minimum-idle: 10 # 연결 풀에서 HikariCP가 유지 관리하는 최소 유휴 연결 수
+
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://msql1.mysql.database.azure.com:3306/azure1
+    username: azure1
+    password: mysql1!@#
+
+  sql:
+    init:
+      mode: always	# 초기 쿼리문 작성 always, never
+      schema-locations: classpath*:initSql/schema.sql
+      data-locations: classpath*:initSql/data.sql
+
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create   #create, update, validate, none, create-drop
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl   # 카멜이 언더바로 변경되는거 막기
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl   # 쿼리중 필드가 지정한대로 하도록(대소문자 구분하는 DB의 경우 완전 필요)
+    defer-datasource-initialization: true	# sql 파일이 hibernate 초기화 이후 동작하게 하기 위한 옵션
+
+    p6spy:
+      enable-logging: true   # JDBC 이벤트 로깅을 위한 P6LogFactory 등록
+      multiline: true   # com.p6spy.engine.spy.appender.MultiLineFormat 사용 (SingleLineFormat 대신)
+      logging: slf4j   # 기본 리스너들을 위한 로깅 사용 [slf4j, sysout, file, custom]
+      # 실제 값으로 '?'를 대체한 효과적인 SQL 문자열을 추적 시스템에 보고
+      # 참고: 이 설정은 로깅 메시지에 영향을 주지 않음
+      tracing:
+        include-parameter-values: true
+#      log-file: spy.log   # 파일 로깅 사용 시 로그 파일 지정: 로그 파일 사용 (logging=file일 때만)
+#      custom-appender-class: my.custom.LoggerClass   # 커스텀 로거 클래스 지정: 사용할 클래스 파일 (logging=custom일 때만). 클래스는 com.p6spy.engine.spy.appender.FormattedLogger를 구현해야 함
+#      log-format:   # 커스텀 로그 포맷 지정: 지정하면 com.p6spy.engine.spy.appender.CustomLineFormat이 이 로그 포맷으로 사용됨 
+      # 로그 메시지 필터링을 위한 정규 표현식 패턴 사용: 지정되면 일치하는 메시지만 로깅됨
+#      log-filter:
+#        pattern:
+
+  jwt:
+    secret: ENC(pLgYUzPV80JARINB7Sd4msqCoQNDSvM3yJ3908meS2ZnhEP4XJYkUmIFr2kSoNwHpwxR8bu13pg2pWmqdzod2A==)   # 토큰 암호화 보안키
+#    secret: ThisIsSilFrameworkAndThisFrameworkIsBorn20250101BySil   # 토큰 암호화 보안키
+    access:
+      expiration: 6000	# access토큰 만료시간(second)
+    refresh:
+      expiration: 86400	# refresh토큰 만료시간(second)
+
+  servlet:
+    multipart:
+      maxFileSize: 10MB # 파일 하나의 최대 크기
+      maxRequestSize: 30MB  # 한 번에 최대 업로드 가능 용량
+
+server:
+  host:
+    api: http://localhost:8080
+    front: http://localhost:3000
+
+# 파일암호화
+jasypt:
+  encryptor:
+    key: sil
+
+# SWAGGER 설정
+springdoc:
+  packages-to-scan: com.sil.bejpa
+  swagger-ui:
+    path: /swagger-ui.html
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    display-request-duration: true
+    tags-sorter: alpha
+    doc-expansion : none
+    defaultModelsExpandDepth: -1
+  api-docs:
+    path: /api
+    show-actuator: true
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  paths-to-match:
+  show-login-endpoint: true	# 로그인은 security UsernamePasswordAuthenticationFilter라 실제url 이 없어서 swagger에 나타나도록 설정 
+  override-with-generic-response: false # restcontrollerAdvice 와 관련 오류나서 처리(버전 많이탄다 boot와 swagger 버전 호환 확인필수)
+
+file:
+  board:
+    dir: C:\usr\upload
+    path: \board
+
+
+logging:
+  level:
+    root: info
+    com.sil.bejpa: debug
+    jdbc:
+      sqlonly: debug
+      resultsettable: debug
