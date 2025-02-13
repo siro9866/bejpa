@@ -77,12 +77,12 @@ public class SwaggerConfig {
 		
 		final Server localServer = new Server();
 		localServer.setUrl(HOST_API);
-		localServer.description("로컬 서버 도매인");
+		localServer.description("서버 도매인");
 		server.add(localServer);
 
 		final Server devServer = new Server();
 		devServer.setUrl("http://61.251.164.192");
-		devServer.description("개발 서버 도매인");
+		devServer.description("안씀 서버 도매인");
 		server.add(devServer);
 		
 		return server;

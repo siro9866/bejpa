@@ -61,9 +61,8 @@ spring:
 
 server:
   host:
-    api: http://azure1-g3geewbybwc3bdff.koreacentral-01.azurewebsites.net
+    api: https://azure1-g3geewbybwc3bdff.koreacentral-01.azurewebsites.net
     front: http://localhost:3000
-  port: 8080
 
 # 파일암호화
 jasypt:
