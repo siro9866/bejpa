@@ -77,7 +77,8 @@ dependencies {
     implementation 'com.azure.spring:spring-cloud-azure-starter-active-directory'
     implementation 'com.azure.spring:spring-cloud-azure-starter'
     implementation 'com.azure.spring:spring-cloud-azure-starter-jdbc-postgresql'
-    implementation platform('com.azure:azure-sdk-bom:1.2.31')
+    // https://mvnrepository.com/artifact/com.azure/azure-core-http-netty
+    implementation group: 'com.azure', name: 'azure-core-http-netty', version: '1.15.9'
     // AZURE
 
     // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
