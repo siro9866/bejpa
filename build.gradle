@@ -37,8 +37,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
 //    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-    runtimeOnly 'com.mysql:mysql-connector-j'
+    //runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    //runtimeOnly 'com.mysql:mysql-connector-j'
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
@@ -78,7 +78,7 @@ dependencies {
     implementation 'com.azure.spring:spring-cloud-azure-starter-data-cosmos'
     implementation 'com.azure.spring:spring-cloud-azure-starter-keyvault'
     implementation 'com.azure.spring:spring-cloud-azure-starter-storage'
-    implementation 'com.azure.spring:spring-cloud-azure-starter-jdbc-mysql'
+    //implementation 'com.azure.spring:spring-cloud-azure-starter-jdbc-mysql'
     // AZURE
 
     // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
