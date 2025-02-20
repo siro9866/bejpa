@@ -71,14 +71,12 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
 
     // AZURE
-    implementation 'com.azure.spring:spring-cloud-azure-starter-jdbc-postgresql'
-    implementation 'com.azure:azure-identity-extensions:1.0.0'
-    implementation 'com.azure.spring:spring-cloud-azure-starter'
-    implementation 'com.azure.spring:spring-cloud-azure-starter-active-directory'
     implementation 'com.azure.spring:spring-cloud-azure-starter-data-cosmos'
     implementation 'com.azure.spring:spring-cloud-azure-starter-keyvault'
     implementation 'com.azure.spring:spring-cloud-azure-starter-storage'
-    //implementation 'com.azure.spring:spring-cloud-azure-starter-jdbc-mysql'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-active-directory'
+    implementation 'com.azure.spring:spring-cloud-azure-starter'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-jdbc-postgresql'
     // AZURE
 
     // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
