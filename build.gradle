@@ -77,7 +77,7 @@ dependencies {
     implementation 'com.azure.spring:spring-cloud-azure-starter-active-directory'
     implementation 'com.azure.spring:spring-cloud-azure-starter'
     implementation 'com.azure.spring:spring-cloud-azure-starter-jdbc-postgresql'
-    implementation platform('com.azure:azure-sdk-bom:{bom_version_to_target}')
+    implementation platform('com.azure:azure-sdk-bom:1.2.31')
     // AZURE
 
     // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
