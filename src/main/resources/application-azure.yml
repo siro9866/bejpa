@@ -17,7 +17,7 @@ spring:
 
   sql:
     init:
-      mode: never	# 초기 쿼리문 작성 always, never
+      mode: always	# 초기 쿼리문 작성 always, never
       schema-locations: classpath*:initSql/schema.sql
       data-locations: classpath*:initSql/data.sql
 
