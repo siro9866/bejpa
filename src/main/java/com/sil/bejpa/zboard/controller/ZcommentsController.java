@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequiredArgsConstructor
-@Tag(name = "게시판", description = "게시판 댓글 API")
+@Tag(name = "게시판댓글", description = "게시판 댓글 API")
 @Slf4j
 @RequestMapping("/sample/board/comments")
 public class ZcommentsController {
