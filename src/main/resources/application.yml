@@ -1,5 +1,5 @@
 spring:
-#  profiles.active: azure  # run configuration 에서 local주입해서 사용
+  profiles.active: ${SPRING_ACTIVE}  # run configuration 에서 local주입해서 사용
 
   mvc:
     pathmatch:
