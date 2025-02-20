@@ -9,7 +9,6 @@ ext {
     springCloudAzureVersion = "5.20.0"
 }
 
-
 group = 'com.sil'
 version = '0.0.1-SNAPSHOT'
 
@@ -40,6 +39,7 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     //runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     //runtimeOnly 'com.mysql:mysql-connector-j'
+    runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
@@ -76,6 +76,8 @@ dependencies {
     implementation 'com.azure.spring:spring-cloud-azure-starter-storage'
     implementation 'com.azure.spring:spring-cloud-azure-starter-active-directory'
     implementation 'com.azure.spring:spring-cloud-azure-starter'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-jdbc-postgresql'
+    implementation platform('com.azure:azure-sdk-bom:{bom_version_to_target}')
     // AZURE
 
     // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
@@ -116,7 +118,6 @@ dependencyManagement {
         mavenBom "com.azure.spring:spring-cloud-azure-dependencies:$springCloudAzureVersion"
     }
 }
-
 
 tasks.named('test') {
     useJUnitPlatform()
