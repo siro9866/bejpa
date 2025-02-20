@@ -1,19 +1,14 @@
 spring:
-#  datasource:
-#    hikari:
-#      poolName: HikariCP
-#      connectionTimeout: 10000 # 10초를 뜻함. 클라이언트가 pool에 connection을 요청하는데 기다리는 최대시간
-#      connection-init-sql: SELECT 1
-#      maximum-pool-size: 10 # 유휴 및 사용중인 connection을 포함하여 풀에 보관가능한 최대 커넥션 개수
-#      max-lifetime: 1800000 # 30분을 뜻함. connection의 최대 유지 시간을 설정
-#      readOnly: false # pool에서 얻은 connection이 기본적으로 readOnly인지 지정하는 설정, 데이터베이스가 readOnly 속성을 지원할 경우에만 사용가능
-#      validation-timeout: 2000
-#      minimum-idle: 10 # 연결 풀에서 HikariCP가 유지 관리하는 최소 유휴 연결 수
-
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://msql1.mysql.database.azure.com:3306/azure1
-#    username: azure1
-#    password: mysql1!@#
+  datasource:
+    hikari:
+      poolName: HikariCP
+      connectionTimeout: 10000 # 10초를 뜻함. 클라이언트가 pool에 connection을 요청하는데 기다리는 최대시간
+      connection-init-sql: SELECT 1
+      maximum-pool-size: 10 # 유휴 및 사용중인 connection을 포함하여 풀에 보관가능한 최대 커넥션 개수
+      max-lifetime: 1800000 # 30분을 뜻함. connection의 최대 유지 시간을 설정
+      readOnly: false # pool에서 얻은 connection이 기본적으로 readOnly인지 지정하는 설정, 데이터베이스가 readOnly 속성을 지원할 경우에만 사용가능
+      validation-timeout: 2000
+      minimum-idle: 10 # 연결 풀에서 HikariCP가 유지 관리하는 최소 유휴 연결 수
 
   sql:
     init:

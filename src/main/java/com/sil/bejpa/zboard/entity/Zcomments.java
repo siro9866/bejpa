@@ -33,7 +33,7 @@ public class Zcomments extends Base {
 	private Long parentsCommentsSeq;
 
 	@Comment("댓글내용")
-	@Column(name = "COMMENTS", nullable = false, columnDefinition = "LONGTEXT")
+	@Column(name = "COMMENTS", nullable = false, length = 20000)
 	private String comments;
 	
 	@Comment("삭제여부")
