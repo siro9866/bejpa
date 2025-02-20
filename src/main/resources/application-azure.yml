@@ -84,6 +84,7 @@ logging:
   level:
     root: info
     com.sil.bejpa: debug
+    com.zaxxer.hikari: debug
     jdbc:
       sqlonly: debug
       resultsettable: debug
