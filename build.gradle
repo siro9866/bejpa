@@ -5,6 +5,10 @@ plugins {
     id "com.microsoft.azure.azurewebapp" version "1.10.0"
 }
 
+ext {
+    springCloudAzureVersion = "5.20.0"
+}
+
 group = 'com.sil'
 version = '0.0.1-SNAPSHOT'
 
@@ -29,11 +33,18 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-keyvault'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-storage'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-active-directory'
+    implementation 'com.azure.spring:spring-cloud-azure-starter'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-jdbc-mysql'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-jdbc-postgresql'
     compileOnly 'org.projectlombok:lombok'
 //    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     runtimeOnly 'com.mysql:mysql-connector-j'
+    runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
@@ -63,6 +74,15 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
+
+    // AZURE
+    implementation 'com.azure.spring:spring-cloud-azure-starter-jdbc-postgresql'
+    implementation 'com.azure:azure-identity-extensions:1.0.0'
+    implementation 'com.azure.spring:spring-cloud-azure-starter'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-active-directory'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-data-cosmos'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-keyvault'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-storage'
 
     // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.11.4'
@@ -95,6 +115,12 @@ azurewebapp {
 
 clean {
     delete file(querydslDir)
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "com.azure.spring:spring-cloud-azure-dependencies:$springCloudAzureVersion"
+    }
 }
 
 tasks.named('test') {
