@@ -9,11 +9,13 @@ spring:
       readOnly: false # pool에서 얻은 connection이 기본적으로 readOnly인지 지정하는 설정, 데이터베이스가 readOnly 속성을 지원할 경우에만 사용가능
       validation-timeout: 2000
       minimum-idle: 10 # 연결 풀에서 HikariCP가 유지 관리하는 최소 유휴 연결 수
-#    url: jdbc:postgresql://postgresssql1.postgres.database.azure.com:5432/postgres?sslmode=require&user=leekw@seowoninfo.com&authenticationPluginClassName=com.azure.identity.extensions.jdbc.postgresql.AzurePostgresqlAuthenticationPlugin
+    url: jdbc:postgresql://postazure1.postgres.database.azure.com:5432/pazure
 
   # h2 ################################################################################################################
     #driver-class-name: org.h2.Driver
     #url: jdbc:h2:tcp://localhost/~/sangsil
+    username: seowon
+    password: postgress1!
   # h2 ################################################################################################################
 
   # mariadb ###########################################################################################################

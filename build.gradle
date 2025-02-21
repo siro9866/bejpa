@@ -69,6 +69,7 @@ dependencies {
     // AZURE
     // https://mvnrepository.com/artifact/com.azure.spring/spring-cloud-azure-starter-jdbc-postgresql
     implementation group: 'com.azure.spring', name: 'spring-cloud-azure-starter-jdbc-postgresql', version: '5.20.0'
+    implementation group: 'com.azure.spring', name: 'spring-cloud-azure-starter', version: '5.20.0'
     // AZURE
 
     // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
