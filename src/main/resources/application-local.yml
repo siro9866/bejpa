@@ -52,7 +52,10 @@ spring:
 #      custom-appender-class: my.custom.LoggerClass   # 커스텀 로거 클래스 지정: 사용할 클래스 파일 (logging=custom일 때만). 클래스는 com.p6spy.engine.spy.appender.FormattedLogger를 구현해야 함
 #      log-format:   # 커스텀 로그 포맷 지정: 지정하면 com.p6spy.engine.spy.appender.CustomLineFormat이 이 로그 포맷으로 사용됨 
       # 로그 메시지 필터링을 위한 정규 표현식 패턴 사용: 지정되면 일치하는 메시지만 로깅됨
-#      log-filter:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  #      log-filter:
 #        pattern:
 
   jwt:
